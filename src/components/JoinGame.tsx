@@ -11,8 +11,9 @@ export default function JoinGame({ onConnect }: JoinGameProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (playerName.trim()) {
-      // Always connect to localhost:8080
-      const url = 'ws://localhost:8080';
+      // Always use the current host (localhost or network IP)
+      const currentHost = window.location.hostname;
+      const url = `ws://${currentHost}:8080`;
       onConnect(url, playerName.trim());
     }
   };
